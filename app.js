@@ -26,6 +26,24 @@ app.get('/carros/:tipo', function(req, res){
     });
 });
 
+//POST para salvar um carro
+app.post('/carros', function(req, res){
+    //carro enviado no formato JSON
+    let carro = req.body;
+    carrobd.save(carro, function(carro){
+        res.json(carro);
+    });
+});
+
+//PUT para atualizar um carro
+app.put('/carros', function(req, res){
+    //carro enviado no formato JSON
+    let carro = req.body;
+    carrobd.update(carro, function(carro){
+        res.json(carro);
+    });
+});
+
 //inicia servidor
 let server = app.listen(3000, function(){
     let host = server.address().address;

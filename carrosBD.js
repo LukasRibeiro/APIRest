@@ -126,7 +126,6 @@ class CarroDB {
 		// Fecha a conexão.
 		connection.end();
     }
-    
 
 	// Deleta um carro no banco de dados.
 	static delete(carro, callback) {
