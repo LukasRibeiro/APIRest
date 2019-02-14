@@ -1,34 +1,34 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const carrobd = require('./carrosBD');
 
 //configurando para ler dados do POST por form-urlencode e application/json
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//configurando uma rota raiz
-app.get('/', function(req, response){
-    res.send("API de carro ");
-
-});
+app.get('/', function (req, res) {
+	res.send("API dos Carros");
+})
 
 //GET em /carros
 app.get('/carros', function(req, res){
-    res.send("listar todos os carros aqui ");
+    carrobd.getCarros(function(carros){
+        res.json(carros);
+    });
 });
 
-//GET em /carros/esportivos
+//GET em /carros/tipo para retornar todo o tipo de carros (esportivos, luxo, classicos)
 app.get('/carros/:tipo', function(req, res){
     let tipo = req.params.tipo;
-    res.send("Lista de carros: " + tipo);
+    carrobd.getCarroById(tipo, function(carros){
+        res.json(carros);
+    });
 });
 
 //inicia servidor
 let server = app.listen(3000, function(){
     let host = server.address().address;
-    let port = server.address().address;
+    let port = server.address().port;
     console.log('servidor iniciado em http://%s:%s', host, port);
 });
-
-
-
