@@ -13,9 +13,6 @@
   <li>Mysql</li>
 </ol>
 
-
-
-
 <h3>Node.js</h3>
 
 <p>Node.js é um interpretador de código JavaScript com o código aberto, focado em migrar o Javascript do lado do cliente para servidores. Seu objetivo é ajudar programadores na criação de aplicações de alta escalabilidade (como um servidor web[1]), com códigos capazes de manipular dezenas de milhares de conexões simultâneas, numa única máquina física.</p>
