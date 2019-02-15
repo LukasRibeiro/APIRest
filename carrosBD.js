@@ -39,7 +39,6 @@ class CarroDB {
     }
     
 
-
 	// metodo que Retorna a lista de carros por tipo do banco de dados
 	static getCarrosByTipo(tipo, callback) {
 
