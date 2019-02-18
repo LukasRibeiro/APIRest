@@ -1,4 +1,3 @@
-
 let express = require('express');
 const router = express.Router();
 const CarroDB = require('../Model/CarrosBD');
@@ -10,7 +9,6 @@ router.get('/carros', function (req, res) {
 	});
 });
 
-
 // GET em /carros/id
 router.get('/carros/:id(\\d+)', function (req, res) {
 	let id = req.params.id;
@@ -18,7 +16,6 @@ router.get('/carros/:id(\\d+)', function (req, res) {
 		res.json(carro)
 	});
 });
-
 
 // DELETE em /carros/id
 router.delete('/carros/:id(\\d+)', function (req, res) {
@@ -29,17 +26,13 @@ router.delete('/carros/:id(\\d+)', function (req, res) {
 	});
 });
 
-
-
-// GET em /carros/xxx
+// GET em /carros/tipo (Esportivos, classicos, luxo)
 router.get('/carros/:tipo', function (req, res) {
 	let tipo = req.params.tipo;
 	CarroDB.getCarrosByTipo(tipo, function(carros) {
 		res.json(carros)
 	});
 });
-
-
 
 // POST para salvar um carro
 router.post('/carros', function (req, res) {
@@ -49,8 +42,6 @@ router.post('/carros', function (req, res) {
 		res.json(carro)
 	});
 });
-
-
 
 // PUT para atualizar um carro
 router.put('/carros', function (req, res) {
