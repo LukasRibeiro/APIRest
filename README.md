@@ -5,6 +5,9 @@
 
 <P>Objetivo deste projeto é criar uma APIRest utilizando as tecnologias Node.js e Express para retornar uma lista de carros salvo no banco de dados.</P>
 
+<h3>Obs: </h3>
+<p>Para a criação do banco de dados, há no repositorio dois arquivos .sql para se criar o banco. O aquivo <b>CreateTable.sql<b>, permite que crie a tabela de carros no BD com todos os pre-requisitos nescessarios. O arquivo <b>InsertCarros.sql<b>, permite que insira todos os carros na tabela com os atributos nescessarios.</p>
+
 <h3>Tecnologias Utilizadas</h3>
 
 <ol>
