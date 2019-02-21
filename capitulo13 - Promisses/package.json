@@ -1,0 +1,14 @@
+{
+  "name": "promisses",
+  "version": "1.0.0",
+  "description": "trabalhando com funçao de promisses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Lucas Monteiro Ribeiro",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.16.0"
+  }
+}
