@@ -4,17 +4,6 @@
 
 Objetivo deste projeto é criar uma APIRest utilizando as tecnologias Node.js e Express para retornar uma lista de carros salvo no banco de dados. Este projeto foi realizado com o estudo do livro **Node Essencial** escrito pelo professor Ricardo R Lecheta. A partir do capitulo 10 é construida a API de forma que cada capitulo é inserido uma nova parte ou uma melhoria no codigo. 
 
-<h3>Obs: </h3>
-<p>Para a criação do banco de dados, há no repositorio dois arquivos com extensão <b>.sql</b> para se criar o banco. O aquivo <b>CreateTable.sql</b> permite que crie a tabela de carros no BD com todos os pre-requisitos nescessarios. O arquivo <b>InsertCarros.sql</b>, permite que insira todos os carros na tabela com os atributos nescessarios.</p>
-
-<h3>Tecnologias Utilizadas</h3>
-
->Node.js
-
->Express
-
->Mysql
-
 <h2>Conceitos</h2>
 
 <h3>API (Application Programming Interface)</h3>
@@ -40,15 +29,86 @@ Desta forma, entendemos que as APIs permitem uma interoperabilidade entre aplica
 
 >Um webservice é dito RESTful se ele adere aos princípios fundamentais.
 
-<h3>Node.js</h3>
 
-<p>Node.js é um interpretador de código JavaScript com o código aberto, focado em migrar o Javascript do lado do cliente para servidores. Seu objetivo é ajudar programadores na criação de aplicações de alta escalabilidade (como um servidor web), com códigos capazes de manipular dezenas de milhares de conexões simultâneas, numa única máquina física.</p>
+<h3>Tecnologias Utilizadas</h3>
+
+>Node.js
+
+>Express
+
+>Mysql
+
+<h3>Criando o banco de dados!</h3>
+
+Neste estudo utilizamos o banco de dados mysql que esta disponivel para download nos site: https://dev.mysql.com/downloads/windows/installer/8.0.html.
+
+Para a criação da tabela do banco de dados de acordo com as regras de negocio, basta inserir os comandos abaixo:
+
+```
+create database livro;
+grant all privileges on livro.* to "livro"@"localhost" identified by "livro123";
+flush privileges;
+
+use livro;
+
+create table carro
+    (id bigint not null auto_increment,
+    nome varchar(255),
+    descricao varchar(255),
+    url_foto varchar(255),
+    url_video varchar(255),
+    latitude varchar(255),
+    longitude varchar(255),
+    tipo varchar(255), primary key (id) );
+    
+desc carro;
+```
+O primeiro comando indica que criaremos um banco de dados com o nome **livro** e para esse banco passamos para ele as mesmas permissoes de um usuario root padrão. Após criar o novo banco de dados, o comando **use livro**, ira dar acesso ao banco que acabamos de criar, para assim podermos criar a tabela de carros.
+
+<h3>Inserindo dados na tabela carros</h3>
+
+Após criar a tabela carros, precisamos inserir todos os carros que estarão disponiveis no banco, para inserir os carros basta colar os comandos abaixo no mysql:
+
+```
+#Carros Clássicos
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Tucker 1948','Descrição Tucker 1948','http://www.livroandroid.com.br/livro/carros/classicos/Tucker.png','http://www.livroandroid.com.br/livro/carros/classicos/tucker.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Chevrolet Corvette','Descrição Chevrolet Corvette','http://www.livroandroid.com.br/livro/carros/classicos/Chevrolet_Corvette.png','http://www.livroandroid.com.br/livro/carros/classicos/corvette.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Chevrolet Impala Coupe','Descrição Chevrolet Impala Coupe','http://www.livroandroid.com.br/livro/carros/classicos/Chevrolet_Impala_Coupe.png','http://www.livroandroid.com.br/livro/carros/classicos/chevrolet_impala.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Cadillac Deville Convertible','Descrição Cadillac Deville Convertible','http://www.livroandroid.com.br/livro/carros/classicos/Cadillac_Deville_Convertible.png','http://www.livroandroid.com.br/livro/carros/classicos/cadillac_deville.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Chevrolet Bel-Air','Descrição Chevrolet Bel-Air','http://www.livroandroid.com.br/livro/carros/classicos/Chevrolet_BelAir.png','http://www.livroandroid.com.br/livro/carros/classicos/chevrolet_bel_air.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Cadillac Eldorado','Descrição Cadillac Eldorado','http://www.livroandroid.com.br/livro/carros/classicos/Cadillac_Eldorado.png','http://www.livroandroid.com.br/livro/carros/classicos/cadillac_eldorado.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Ferrari 250 GTO','Descrição Ferrari 250 GTO','http://www.livroandroid.com.br/livro/carros/classicos/Ferrari_250_GTO.png','http://www.livroandroid.com.br/livro/carros/classicos/ferrari_gto.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Dodge Challenger','Descrição Dodge Challenger','http://www.livroandroid.com.br/livro/carros/classicos/Dodge_Challenger.png','http://www.livroandroid.com.br/livro/carros/classicos/dodge_challenger.mp4','','','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Camaro SS 1969','Descrição Camaro SS 1969','http://www.livroandroid.com.br/livro/carros/classicos/Camaro_SS.png','http://www.livroandroid.com.br/livro/carros/classicos/camaro_ss.mp4','-23.564224','-46.653156','classicos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Ford Mustang 1976','Descrição Ford Mustang 1976','http://www.livroandroid.com.br/livro/carros/classicos/Ford_Mustang.png','http://www.livroandroid.com.br/livro/carros/classicos/ford_mustang.mp4','-23.564224','-46.653156','classicos');
 
 
-<h3>Express</h3>
+#Carros Esportivos
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Ferrari FF','Descrição Ferrari FF','http://www.livroandroid.com.br/livro/carros/esportivos/Ferrari_FF.png','http://www.livroandroid.com.br/livro/carros/esportivos/ferrari_ff.mp4','44.532218','10.864019','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('AUDI GT Spyder','Descrição AUDI GT Spyder','http://www.livroandroid.com.br/livro/carros/esportivos/Audi_Spyder.png','http://www.livroandroid.com.br/livro/carros/esportivos/audi_gt.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Porsche Panamera','Descrição Porsche Panamera','http://www.livroandroid.com.br/livro/carros/esportivos/Porsche_Panamera.png','http://www.livroandroid.com.br/livro/carros/esportivos/porsche_panamera.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Lamborghini Aventador','Descrição Lamborghini Aventador','http://www.livroandroid.com.br/livro/carros/esportivos/Lamborghini_Aventador.png','http://www.livroandroid.com.br/livro/carros/esportivos/lamborghini_aventador.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Chevrolet Corvette Z06','Descrição Chevrolet Corvette Z06','http://www.livroandroid.com.br/livro/carros/esportivos/Chevrolet_Corvette_Z06.png','http://www.livroandroid.com.br/livro/carros/esportivos/chevrolet_corvette.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('BMW M5','Descrição BMW M5','http://www.livroandroid.com.br/livro/carros/esportivos/BMW.png','http://www.livroandroid.com.br/livro/carros/esportivos/bmw-m5.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Renault Megane RS Trophy','Descrição Renault Megane RS Trophy','http://www.livroandroid.com.br/livro/carros/esportivos/Renault_Megane_Trophy.png','http://www.livroandroid.com.br/livro/carros/esportivos/renault_megane.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Maserati Grancabrio Sport','Descrição Maserati Grancabrio Sport','http://www.livroandroid.com.br/livro/carros/esportivos/Maserati_Grancabrio_Sport.png','http://www.livroandroid.com.br/livro/carros/esportivos/renault_megane.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('McLAREN MP4-12C','Descrição McLAREN MP4-12C','http://www.livroandroid.com.br/livro/carros/esportivos/McLAREN.png','http://www.livroandroid.com.br/livro/carros/esportivos/mcLaren.mp4','-23.564224','-46.653156','esportivos');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('MERCEDES-BENZ C63 AMG','Descrição MERCEDES-BENZ C63 AMG','http://www.livroandroid.com.br/livro/carros/esportivos/MERCEDES_BENZ_AMG.png','http://www.livroandroid.com.br/livro/carros/esportivos/mercedes.mp4','-23.564224','-46.653156','esportivos');
 
-<p>Express, é uma estrutura de aplicativo da web para o Node.js, lançada como software livre e de código aberto sob a licença MIT.Ele é projetado para construir aplicativos da Web e APIs. Ele foi chamado de framework de servidores padrão de fato para o Node.js.</p>
 
-<h3>Mysql</h3>
+#Carros de Luxo
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Bugatti Veyron','Descrição Bugatti Veyron','http://www.livroandroid.com.br/livro/carros/luxo/Bugatti_Veyron.png','http://www.livroandroid.com.br/livro/carros/luxo/bugatti_veyron.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Ferrari Enzo','Descrição Ferrari Enzo','http://www.livroandroid.com.br/livro/carros/luxo/Ferrari_Enzo.png','http://www.livroandroid.com.br/livro/carros/luxo/ferrari_enzo.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Lamborghini Reventon','Descrição Lamborghini Reventon','http://www.livroandroid.com.br/livro/carros/luxo/Lamborghini_Reventon.png','http://www.livroandroid.com.br/livro/carros/luxo/lamborghini _reventon.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Leblanc Mirabeau','Descrição Leblanc Mirabeau','http://www.livroandroid.com.br/livro/carros/luxo/Leblanc_Mirabeau.png','http://www.livroandroid.com.br/livro/carros/luxo/leblanc_mirabeau.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Shelby Supercars Ultimate','Descrição Shelby Supercars Ultimate','http://www.livroandroid.com.br/livro/carros/luxo/Shelby_Supercars_Ultimate.png','http://www.livroandroid.com.br/livro/carros/luxo/shelby.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Pagani Zonda','Descrição Pagani Zonda','http://www.livroandroid.com.br/livro/carros/luxo/Pagani_Zonda.png','http://www.livroandroid.com.br/livro/carros/luxo/pagani_zonda.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Koenigsegg CCX','Descrição Koenigsegg CCX','http://www.livroandroid.com.br/livro/carros/luxo/Koenigsegg_CCX.png','http://www.livroandroid.com.br/livro/carros/luxo/koenigsegg.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Mercedes SLR McLaren','Descrição Mercedes SLR McLaren','http://www.livroandroid.com.br/livro/carros/luxo/Mercedes_McLaren.png','http://www.livroandroid.com.br/livro/carros/luxo/mclaren_slr.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Rolls Royce Phantom','Descrição Rolls Royce Phantom','http://www.livroandroid.com.br/livro/carros/luxo/Rolls_Royce_Phantom.png','http://www.livroandroid.com.br/livro/carros/luxo/rolls_royce.mp4','-23.564224','-46.653156','luxo');
+insert into carro (nome,descricao,url_foto,url_video,latitude,longitude,tipo) VALUES('Lexus LFA','Descrição Lexus LFA','http://www.livroandroid.com.br/livro/carros/luxo/Lexus_LFA.png','http://www.livroandroid.com.br/livro/carros/luxo/lexus.mp4','-23.564224','-46.653156','luxo');
 
-<p>O MySQL é um sistema de gerenciamento de banco de dados (SGBD), que utiliza a linguagem SQL (Linguagem de Consulta Estruturada, do inglês Structured Query Language) como interface. </p>
+#filtro para a listagem de todos os carros no banco.
+select id,nome,tipo from carro;
+```
+Os carros inseridos são separados por 3 categorias (calssicos, esportivos, luxo,), onde que são inseridos 10 carros de cada cateoria no banco. O ultimo comando listado **select id,nome,tipo from carro;**, gera uma pesquisa pelos carros filtrando os 3 campos indicados como id, nome e tipo, isto para facilitar a pesquisa por carros na tabela. 
