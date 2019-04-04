@@ -1,10 +1,10 @@
-var express = require('express');
+const express = require('express');
 const router = express.Router();
 const CarroDB = require('../model/Carros.BD');
 
 // GET em /carros
-router.get('/carros', function (req, res, next) {
-    CarroDB.getCarros(function (error, carros) {
+router.get('/carros',  (req, res, next) => {
+    CarroDB.getCarros( (error, carros) => {
         if (error) {
             // console.log("Erro de SQL: " + error.message);
             return next(error);
@@ -14,15 +14,15 @@ router.get('/carros', function (req, res, next) {
 });
 
 // GET em /carros/id
-router.get('/carros/:id(\\d+)', function (req, res) {
+router.get('/carros/:id(\\d+)', (req, res) => {
     let id = req.params.id;
-    CarroDB.getCarroById(id, function (carro) {
+    CarroDB.getCarroById(id, (carro) => {
         res.json(carro)
     });
 });
 
 // DELETE em /carros/id
-router.delete('/carros/:id(\\d+)', function (req, res) {
+router.delete('/carros/:id(\\d+)', (req, res) => {
     let id = req.params.id;
     console.log("deletar arro " + id);
     CarroDB.deleteById(id, function (affectedRows) {
@@ -32,27 +32,27 @@ router.delete('/carros/:id(\\d+)', function (req, res) {
 
 
 // GET em /carros/xxx
-router.get('/carros/:tipo', function (req, res) {
+router.get('/carros/:tipo', (req, res) => {
     let tipo = req.params.tipo;
-    CarroDB.getCarrosByTipo(tipo, function (carros) {
+    CarroDB.getCarrosByTipo(tipo, (carros) => {
         res.json(carros)
     });
 });
 
 // POST para salvar um carro
-router.post('/carros', function (req, res) {
+router.post('/carros', (req, res) => {
     // Carro enviado no formato JSON
     let carro = req.body;
-    CarroDB.save(carro, function (carro) {
+    CarroDB.save(carro, (carro) => {
         res.json(carro)
     });
 });
 
 // PUT para atualizar um carro
-router.put('/carros', function (req, res) {
+router.put('/carros', (req, res) => {
     // Carro enviado no formato JSON
     let carro = req.body;
-    CarroDB.update(carro, function (carro) {
+    CarroDB.update(carro, (carro) => {
         // res.json(carro)
         res.json({msg: 'Carro atualizado com sucesso.'})
     });
