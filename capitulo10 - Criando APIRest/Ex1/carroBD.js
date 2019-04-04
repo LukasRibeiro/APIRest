@@ -7,8 +7,8 @@ class CarroDB {
 		// Cria a conexão com MySQL
 		var connection = mysql.createConnection({
 		  host     : 'localhost',
-		  user     : 'livro',
-		  password : 'livro123',
+		  user     : 'root',
+		  password : '123456789',
 		  database : 'livro'
 		});
 
@@ -124,6 +124,23 @@ class CarroDB {
 		let query = connection.query(sql, id, function (error, results, fields) {
 			if (error) throw error;
 			callback(carro)
+		});
+		console.log(query.sql)
+		// Fecha a conexão.
+		connection.end();
+	}
+
+	// Deleta um carro pelo id.
+	static deleteById(id, callback) {
+
+		let connection = CarroDB.connect()
+
+		// SQL para deletar o carro
+		let sql = "delete from carro where id = ?";
+
+		let query = connection.query(sql, id, function (error, results, fields) {
+			if (error) throw error;
+			callback(results.affectedRows)
 		});
 		console.log(query.sql)
 		// Fecha a conexão.

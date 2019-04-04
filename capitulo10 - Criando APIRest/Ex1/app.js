@@ -3,7 +3,6 @@ var app = express();
 const CarroDB = require('./carroBD');
 var bodyParser = require('body-parser');
 
-
 // Configura para ler dados do POST por form-urlencoded e application/json
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
