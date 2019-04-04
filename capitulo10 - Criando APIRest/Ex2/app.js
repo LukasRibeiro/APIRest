@@ -1,6 +1,6 @@
-let express = require('express');
-let app = express();
-let bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 
 // Configura para ler dados do POST por form-urlencoded e application/json
 app.use(bodyParser.urlencoded({ extended: false }));

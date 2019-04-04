@@ -1,11 +1,11 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 // Classe CarroDB
 class CarroDB {
 	// Função para conectar no banco de dados.
 	static connect() {
 		// Cria a conexão com MySQL
-		var connection = mysql.createConnection({
+		let connection = mysql.createConnection({
 		  host     : 'localhost',
 		  user     : 'root',
 		  password : '123456789',
