@@ -1,7 +1,7 @@
-var express = require('express');
+const express = require('express');
 const router = express.Router();
-const CarroDB = require('../model/CarroDB');
-const exec = require('./utils');
+const CarroDB = require('../model/CarroBd');
+const exec = require('../utilis');
 
 // GET em /carros
 router.get('/carros', exec(async (req, res, next) => {

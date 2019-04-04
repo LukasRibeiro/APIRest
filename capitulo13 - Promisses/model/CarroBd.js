@@ -1,11 +1,11 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
 // Classe CarroDB
 class CarroDB {
 	// Função para conectar no banco de dados.
 	static connect() {
 		// Cria a conexão com MySQL
-		var connection = mysql.createConnection({
+		let connection = mysql.createConnection({
 		  host     : 'localhost',
 		  user     : 'root',
 		  password : '123456789',
@@ -16,11 +16,13 @@ class CarroDB {
 		connection.connect();
 		return connection;
 	}
+	
+	//alterando as funções adicionando promisses a cada uma delas.
+	//alteração baseia-se em passar o retorno de reject caso de algum erro ou resolve caso de tudo certo
+
 
 	// Retorna a lista de carros
-	//alterando a função get carros para retornar uma promisse
 	static getCarros() {
-		//alteração baseia-se em passar o retorno de reject caso de algum erro ou resolve caso de tudo certo
 		return new Promise(function(resolve, reject){
 			
 			let connection = CarroDB.connect()

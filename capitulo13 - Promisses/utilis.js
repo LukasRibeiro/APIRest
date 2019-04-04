@@ -9,6 +9,8 @@ const exec = fn =>{
     }
 }
 
+module.exports = exec;
+
 /**
  * O problema de usar aysinc e await e que temos que tratar sempre os erros com "try, catch" o que deixa o codigo trabalhoso
  * e repetitivo de fazer. 
