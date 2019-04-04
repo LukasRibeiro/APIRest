@@ -1,0 +1,17 @@
+{
+  "name": "tratamentos_de_erro",
+  "version": "1.0.0",
+  "description": "Adicionando tratamento de erros nos codigos da API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "nodemon app.js"
+  },
+  "author": "Lucas Ribeiro",
+  "license": "ISC",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0"
+  }
+}
