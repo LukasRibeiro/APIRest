@@ -1,4 +1,4 @@
-<h1>Construindo uma APIRest de carros, com Node.js e Express</h1>
+<h1>Construindo uma APIRest, com Node.js e Express</h1>
 
 <h3>Objetivo</h3>
 
